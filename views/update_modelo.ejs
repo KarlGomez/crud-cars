@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form style="width: 40%" action="/modelos/update" method="POST">
+
+        <h1 style="text-align: center;">UPDATE MODELO</h1>
+
+        <input id="id" type="hidden" name="id" value="<%= modelo._id %>">
+
+        <select id="IdMarca" class="<%= modelo.marca._id %>" name="IdMarca">
+            <% marcas.forEach(function (marca) {
+                if (marca._id.equals(modelo.marca._id)){%>
+                <option value="<%= marca._id %>" selected="true" ><%= marca.nombre %></option>
+            <% } else { %>
+                <option value="<%= marca._id %>"><%= marca.nombre %></option>
+            <%}}); %>
+        </select>
+
+
+        <label for="nombre">Modelo</label>
+        <input id="nombre" type="text" name="nombre" value="<%= modelo.nombre %>">
+
+        <label for="fabricado">Fabricado</label>
+        <input id="fabricado" type="text" name="fabricado" value="<%= modelo.fabricado %>">
+
+        <label for="anyo">Anyo</label>
+        <input id="anyo" type="number" name="anyo" value="<%= modelo.anyo %>">
+
+        <label for="maxPotencia">Max Potencia</label>
+        <input id="maxPotencia" type="text" name="maxPotencia" value="<%= modelo.maxPotencia %>">
+
+        <label for="numAsientos">Numero de Asientos</label>
+        <input id="numAsientos" type="text" name="numAsientos" value="<%= modelo.numAsientos %>">
+
+        <label for="imageUrl">Image</label>
+        <input id="imageUrl" type="text" name="imageUrl" value="<%= modelo.imageUrl %>">
+
+        <input type="submit" value="Update">
+    </form>
+</div>
+</body>
+</html>

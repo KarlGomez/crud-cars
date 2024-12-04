@@ -1,0 +1,255 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Car Brands API",
+    "description": "API for managing car brands and models",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/marcas": {
+      "get": {
+        "summary": "Retrieve all car brands",
+        "responses": {
+          "200": {
+            "description": "A list of car brands",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Marca"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new car brand",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Marca"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Marca"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/marcas/{id}": {
+      "get": {
+        "summary": "Retrieve a car brand by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the car brand to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Car brand found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Marca"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Car brand not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a car brand by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the car brand to delete"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/modelos": {
+      "get": {
+        "summary": "Retrieve all car models",
+        "responses": {
+          "200": {
+            "description": "A list of car models",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Modelo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new car model",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Modelo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Modelo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/modelos/{id}": {
+      "get": {
+        "summary": "Retrieve a car model by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the car model to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Car model found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Modelo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Car model not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a car model by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the car model to delete"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Marca": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "fundadores": {
+            "type": "string"
+          },
+          "fundacion": {
+            "type": "string"
+          }
+        }
+      },
+      "Modelo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "IdMarca": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "fabricado": {
+            "type": "string"
+          },
+          "anyo": {
+            "type": "integer"
+          },
+          "maxPotencia": {
+            "type": "integer"
+          },
+          "numAsientos": {
+            "type": "integer"
+          },
+          "imageUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
